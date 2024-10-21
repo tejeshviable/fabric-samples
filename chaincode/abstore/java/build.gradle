@@ -34,3 +34,8 @@ shadowJar {
         attributes 'Main-Class': 'org.hyperledger.fabric_samples.ABstore'
     }
 }
+
+task getDeps(type: Copy) {
+    from sourceSets.main.compileClasspath
+    into 'libs/'
+}
