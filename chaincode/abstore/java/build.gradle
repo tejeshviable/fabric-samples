@@ -29,7 +29,7 @@ apply plugin: 'com.github.johnrengelman.shadow'
 
 shadowJar {
     archiveBaseName.set('chaincode')
-
+    archiveClassifier.set('')  // Remove classifier
     manifest {
         attributes 'Main-Class': 'org.hyperledger.fabric_samples.ABstore'
     }
