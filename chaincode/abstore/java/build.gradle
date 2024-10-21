@@ -1,10 +1,10 @@
-/*
- * Copyright IBM Corp. 2018 All Rights Reserved.
- *
- * SPDX-License-Identifier: Apache-2.0
- */
+buildscript {
+    dependencies {
+        classpath fileTree(dir: 'plugin', include:['*.jar'])
+    }
+}
+
 plugins {
-    id 'com.github.johnrengelman.shadow' version '8.1.1'
     id 'java'
 }
 
@@ -13,18 +13,10 @@ version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
+
 repositories {
     mavenLocal()
     mavenCentral()
-    maven {
-        url "https://hyperledger.jfrog.io/hyperledger/fabric-maven"
-    }
-    maven {
-        url 'https://jitpack.io'
-    }
-//    maven {
-//        url 'file:///C:/Users/Racloop/.gradle/caches/modules-2/files-2.1/'
-//    }
 }
 
 dependencies {
@@ -33,15 +25,12 @@ dependencies {
     implementation 'commons-logging:commons-logging:1.2'
 }
 
+apply plugin: 'com.github.johnrengelman.shadow'
+
 shadowJar {
     archiveBaseName.set('chaincode')
 
     manifest {
         attributes 'Main-Class': 'org.hyperledger.fabric_samples.ABstore'
     }
-}
-
-task getDeps(type: Copy) {
-    from sourceSets.main.compileClasspath
-    into 'libs/'
 }
