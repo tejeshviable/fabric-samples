@@ -14,17 +14,17 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-//    mavenLocal()
-//    mavenCentral()
-//    maven {
-//        url "https://hyperledger.jfrog.io/hyperledger/fabric-maven"
-//    }
-//    maven {
-//        url 'https://jitpack.io'
-//    }
+    mavenLocal()
+    mavenCentral()
     maven {
-        url 'file:///C:/Users/Racloop/.gradle/caches/modules-2/files-2.1/'
+        url "https://hyperledger.jfrog.io/hyperledger/fabric-maven"
     }
+    maven {
+        url 'https://jitpack.io'
+    }
+//    maven {
+//        url 'file:///C:/Users/Racloop/.gradle/caches/modules-2/files-2.1/'
+//    }
 }
 
 dependencies {
