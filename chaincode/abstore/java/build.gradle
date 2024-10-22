@@ -1,9 +1,8 @@
-//buildscript {
-//    dependencies {
-//        classpath fileTree(dir: 'plugin', include:['*.jar'])
-//    }
-//}
-
+/*
+ * Copyright IBM Corp. 2018 All Rights Reserved.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
 plugins {
     id 'com.github.johnrengelman.shadow' version '8.1.1'
     id 'java'
@@ -14,12 +13,17 @@ version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
-
 repositories {
-    mavenLocal()
-    mavenCentral()
+//    mavenLocal()
+//    mavenCentral()
 //    maven {
-//        url 'file://opt/home/tejeshvi/fabric-samples/chaincode/abstore/java/plugin/'
+//        url "https://hyperledger.jfrog.io/hyperledger/fabric-maven"
+//    }
+//    maven {
+//        url 'https://jitpack.io'
+//    }
+//    maven {
+//        url 'file:///C:/Users/Racloop/.gradle/caches/modules-2/files-2.1/'
 //    }
 }
 
@@ -27,14 +31,13 @@ dependencies {
     implementation 'org.hyperledger.fabric-chaincode-java:fabric-chaincode-shim:2.+'
     implementation 'com.google.protobuf:protobuf-java:3.21.12'  // Adjust version if necessary
     implementation 'commons-logging:commons-logging:1.2'
-//    implementation fileTree(dir:'plugin',includes:['*.jar'])
 }
-
-//apply plugin: 'com.github.johnrengelman.shadow'
 
 shadowJar {
     archiveBaseName.set('chaincode')
-    archiveClassifier.set('')  // Remove classifier
+    archiveVersion.set('1.0')                // Version of the JAR
+    archiveClassifier.set('')                // Removes the "shadow" classifier
+    mergeServiceFiles()
     manifest {
         attributes 'Main-Class': 'org.hyperledger.fabric_samples.ABstore'
     }
