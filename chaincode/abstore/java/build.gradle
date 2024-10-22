@@ -1,11 +1,11 @@
-//buildscript {
-//    dependencies {
-//        classpath fileTree(dir: 'plugin', include:['*.jar'])
-//    }
-//}
+buildscript {
+    dependencies {
+        classpath fileTree(dir: 'plugin', include:['*.jar'])
+    }
+}
 
 plugins {
-    id 'com.github.johnrengelman.shadow' version '8.1.1'
+//    id 'com.github.johnrengelman.shadow' version '8.1.1'
     id 'java'
 }
 
@@ -16,8 +16,11 @@ sourceCompatibility = 1.8
 
 
 repositories {
-    mavenLocal()
-    mavenCentral()
+//    mavenLocal()
+//    mavenCentral()
+    maven {
+        url 'file://opt/home/tejeshvi/fabric-samples/chaincode/abstore/java/plugin/'
+    }
 }
 
 dependencies {
@@ -26,7 +29,7 @@ dependencies {
     implementation 'commons-logging:commons-logging:1.2'
 }
 
-//apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 shadowJar {
     archiveBaseName.set('chaincode')
