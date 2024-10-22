@@ -24,9 +24,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.hyperledger.fabric-chaincode-java:fabric-chaincode-shim:2.+'
-    implementation 'com.google.protobuf:protobuf-java:3.21.12'  // Adjust version if necessary
-    implementation 'commons-logging:commons-logging:1.2'
+//    implementation 'org.hyperledger.fabric-chaincode-java:fabric-chaincode-shim:2.+'
+//    implementation 'com.google.protobuf:protobuf-java:3.21.12'  // Adjust version if necessary
+//    implementation 'commons-logging:commons-logging:1.2'
+    compile fileTree(dir:'plugin',includes:['*.jar'])
 }
 
 apply plugin: 'com.github.johnrengelman.shadow'
