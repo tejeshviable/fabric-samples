@@ -1,11 +1,11 @@
-buildscript {
-    dependencies {
-        classpath fileTree(dir: 'plugin', include:['*.jar'])
-    }
-}
+//buildscript {
+//    dependencies {
+//        classpath fileTree(dir: 'plugin', include:['*.jar'])
+//    }
+//}
 
 plugins {
-//    id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
     id 'java'
 }
 
@@ -16,21 +16,21 @@ sourceCompatibility = 1.8
 
 
 repositories {
-//    mavenLocal()
-//    mavenCentral()
-    maven {
-        url 'file://opt/home/tejeshvi/fabric-samples/chaincode/abstore/java/plugin/'
-    }
+    mavenLocal()
+    mavenCentral()
+//    maven {
+//        url 'file://opt/home/tejeshvi/fabric-samples/chaincode/abstore/java/plugin/'
+//    }
 }
 
 dependencies {
-//    implementation 'org.hyperledger.fabric-chaincode-java:fabric-chaincode-shim:2.+'
-//    implementation 'com.google.protobuf:protobuf-java:3.21.12'  // Adjust version if necessary
-//    implementation 'commons-logging:commons-logging:1.2'
-    implementation fileTree(dir:'plugin',includes:['*.jar'])
+    implementation 'org.hyperledger.fabric-chaincode-java:fabric-chaincode-shim:2.+'
+    implementation 'com.google.protobuf:protobuf-java:3.21.12'  // Adjust version if necessary
+    implementation 'commons-logging:commons-logging:1.2'
+//    implementation fileTree(dir:'plugin',includes:['*.jar'])
 }
 
-apply plugin: 'com.github.johnrengelman.shadow'
+//apply plugin: 'com.github.johnrengelman.shadow'
 
 shadowJar {
     archiveBaseName.set('chaincode')
