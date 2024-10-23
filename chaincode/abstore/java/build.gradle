@@ -11,7 +11,9 @@ plugins {
 group 'org.hyperledger.fabric-chaincode-java'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+// Set Java version to 17
+sourceCompatibility = 17
+targetCompatibility = 17
 
 repositories {
     mavenLocal()
@@ -22,9 +24,6 @@ repositories {
     maven {
         url 'https://jitpack.io'
     }
-//    maven {
-//        url 'file:///C:/Users/Racloop/.gradle/caches/modules-2/files-2.1/'
-//    }
 }
 
 dependencies {
@@ -35,8 +34,8 @@ dependencies {
 
 shadowJar {
     archiveBaseName.set('chaincode')
-    archiveVersion.set('1.0')                // Version of the JAR
-    archiveClassifier.set('')                // Removes the "shadow" classifier
+    archiveVersion.set('1.0')
+    archiveClassifier.set('')
     mergeServiceFiles()
     manifest {
         attributes 'Main-Class': 'org.hyperledger.fabric_samples.ABstore'
@@ -46,4 +45,9 @@ shadowJar {
 task getDeps(type: Copy) {
     from sourceSets.main.compileClasspath
     into 'libs/'
+}
+
+// Set Java options for TLS protocols
+tasks.withType(JavaExec) {
+    environment 'JAVA_OPTS', '-Djdk.tls.client.protocols=TLSv1.2'
 }
